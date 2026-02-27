@@ -13,10 +13,11 @@ def get_params(df, eger_id):
         params[sor["variable"]] = sor["value"]
     return params
 
-p = get_params(df, 2)   # hanyas PLD
+p = get_params(df, 6)   # hanyas PLD
+p["n"] = 0.05
 
 injection_days = [1, 3, 6]
-doses = [0.25, 0.75, 1.5]
+doses = [0.2, 0.4, 0.6]
 
 def rendszer(t, x, p):  
     x1, x2, x3, x4 = x
@@ -28,7 +29,7 @@ def rendszer(t, x, p):
 
     return [dx1dt, dx2dt, dx3dt, dx4dt]
 
-def simulate(p, injection_days, doses, t_end=10):
+def simulate(p, injection_days, doses, t_end=14):
     all_t = []
     all_y = []
 
